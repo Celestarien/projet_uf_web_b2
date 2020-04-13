@@ -1,0 +1,27 @@
+[debug] [2020-03-16T13:41:10.282Z] ----------------------------------------------------------------------
+[debug] [2020-03-16T13:41:10.284Z] Command:       D:\NodeJS\node.exe C:\Users\celes\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-03-16T13:41:10.284Z] CLI Version:   7.15.0
+[debug] [2020-03-16T13:41:10.284Z] Platform:      win32
+[debug] [2020-03-16T13:41:10.284Z] Node Version:  v10.16.0
+[debug] [2020-03-16T13:41:10.285Z] Time:          Mon Mar 16 2020 14:41:10 GMT+0100 (GMT+01:00)
+[debug] [2020-03-16T13:41:10.285Z] ----------------------------------------------------------------------
+[debug] [2020-03-16T13:41:10.286Z] 
+[debug] [2020-03-16T13:41:10.296Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-16T13:41:10.296Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\celes\OneDrive\Ecole\Projet\b2\Web\AppV3\app
+
+[debug] [2020-03-16T15:10:24.421Z] Error: kill ENOSYS
+    at process.kill (internal/process/per_thread.js:198:13)
+    at process.listener (C:\Users\celes\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\signal-exit\index.js:95:15)
+    at process.emit (events.js:198:13)
+[error] 
+[error] Error: An unexpected error has occurred.
