@@ -44,10 +44,10 @@ export default class Search extends React.Component {
         {this.state.isLoading ? (
           <div className="loading">Chargement ...</div>
         ) : (
-          <div className="search-results">
-            <SearchResultsList results={this.state.results} />
-          </div>
-        )}
+            <div className="search-results">
+              <SearchResultsList results={this.state.results} />
+            </div>
+          )}
       </div>
     );
   }

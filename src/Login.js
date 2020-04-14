@@ -2,7 +2,7 @@ import React, { useCallback, useContext } from 'react'
 import { withRouter, Redirect } from 'react-router'
 import app from './base'
 import { AuthContext } from './Auth'
-
+import { Input, Button } from 'antd'
 
 
 const Login = ({ history }) => {
@@ -22,7 +22,7 @@ const Login = ({ history }) => {
     const { currentUser } = useContext(AuthContext)
 
     if (currentUser) {
-        return <Redirect to="/Home" />
+        return <Redirect to="/" />
     }
 
     return (
@@ -32,12 +32,12 @@ const Login = ({ history }) => {
             </h1>
             <form onSubmit={handleLogin}>
                 <label>
-                    <input name='email' type='email' placeholder='Email' />
+                    <Input name='email' type='email' placeholder='Email' />
                 </label>
                 <label>
-                    <input name='password' type='password' placeholder='Mot de passe' />
+                    <Input name='password' type='password' placeholder='Mot de passe' />
                 </label>
-                <button type='submit'>Se connecter</button>
+                <Button htmlType='submit'>Se connecter</Button>
             </form>
         </div>
     )

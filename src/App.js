@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-// import Formulaire from './components/formulaire'
-
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Button } from 'antd'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { AuthProvider } from './Auth';
-import app from './base'
-import Authenticated from './Authenticated';
-
-
-// import NotAuthenticated from 'react-stormpath';
+import PrivateRoute from './PrivateRoute';
+import Home from './Home';
+import Login from './Login';
+import SignUp from './inscription';
+import Media from "./pages/Media";
 
 class App extends Component {
-
   state = {
     user: '',
     mdp: ''
@@ -31,49 +29,48 @@ class App extends Component {
   }
 
   render() {
-    const isLoggedIn = app.auth().currentUser;
-    let authenticated = "";
-    console.log(isLoggedIn);
-    if (isLoggedIn == null) {
-      authenticated = <Authenticated />;
-    } else {
-      authenticated = <button id="deconnexion_button" onClick={() => app.auth().signOut()}>Déconnexion</button>;
-    }
     return (
-      <AuthProvider>
-        <Router>
-          <div className="App">
-            <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Bienvenue sur mon shop.
+      <div className="App">
+        <div className="racine">
+          <AuthProvider>
+            <Router>
+              <div className="App">
+                <header className="App-header">
+                  <img src={logo} className="App-logo" alt="logo" />
+                  <p>
+                    Bienvenue sur mon shop.
                   </p>
-              <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Réalisé avec React
+                  <a
+                    className="App-link"
+                    href="https://reactjs.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Réalisé avec React
                   </a>
-
-              {authenticated}
-              {/* <Input
-                addonBefore='Utilisateur'
-                value={this.state.user}
-                onChange={this.handleChange_user}
-              />
-              <Input
-                addonBefore='Mot de passe'
-                type='password'
-                value={this.state.mdp}
-                onChange={this.handleChange_mdp}
-              />
-              <Formulaire /> */}
-            </header>
-          </div>
-        </Router>
-      </AuthProvider>
+                  <div id='auth_div'>
+                    <Button type='primary' href='/Login'>Se connecter</Button>
+                    <Button type='primary' href='inscription'>S'inscrire</Button>
+                  </div>
+                  <div>
+                    <PrivateRoute exact path='/' component={Home} />
+                    <Route exact path='/Login' component={Login} />
+                    <Route exact path='/inscription' component={SignUp} />
+                    <Switch>
+                      <PrivateRoute path="/serie/:mediaId">
+                        <Media type="tv" />
+                      </PrivateRoute>
+                      <PrivateRoute path="/film/:mediaId">
+                        <Media type="movie" />
+                      </PrivateRoute>
+                    </Switch>
+                  </div>
+                </header>
+              </div>
+            </Router>
+          </AuthProvider>
+        </div>
+      </div>
     )
   }
 }

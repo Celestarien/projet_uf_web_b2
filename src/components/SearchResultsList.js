@@ -1,13 +1,12 @@
-import React from 'react'
-import SearchResult from './SearchResult'
-import { Result } from 'antd'
+import React from "react";
+import SearchResult from "./SearchResult";
 
-const SearchResultsList = props => {
-    return (
-        <div>
-            {props.results.map(result => <SearchResult data={result} />)}
-        </div>
-    )
+const SearchResultsList = props => (
+    <div className="resultats">
+        {props.results.map(result => (
+            <SearchResult data={result} key={`${result.media_type}_${result.id}`} />
+        ))}
+    </div>
+);
 
-}
-export default SearchResultsList
+export default SearchResultsList;

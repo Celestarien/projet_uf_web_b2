@@ -1,39 +1,23 @@
 import axios from "axios";
 
-//const apiKey = "46a90fc8552f8562d902b260f25ed692";
-const apiKey = "5ad98cbbeebb6dcbdcfd7ea7841ac387";
-
-/*
-  Problème :
-[
-  {
-    "title": "Unauthorized",
-    "status": 401,
-    "cause": "Invalid User key or no user key",
-    "details": "Place your key in the header of the requests ex: \"user-key\": YOURKEY"
-  }
-]
-*/
+const apiKey = "97719463bea4bd4b5902c1a735c0556a";
 
 const ApiHelper = {
   search: searchText => {
-    const url = `https://api-v3.igdb.com/games/`;
-
-    return axios.get(url, {
-      headers: {
-        'Accept': 'application/json',
-        'user-key': apiKey
-      },
-      params: {
-        name: searchText
-      },
-      data: 'name'
-    }).then(response => {
-      console.log(response.data.text());
-    })
-      .catch(err => {
-        console.error(err);
-      });
+    const url = `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=fr-FR&query=${searchText}`;
+    return axios.get(url);
+  },
+  getMedia: (type, id) => {
+    const url = `https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&language=fr-FR`;
+    return axios.get(url);
+  },
+  getPhotos: (type, id) => {
+    const imagesUrl = `https://api.themoviedb.org/3/${type}/${id}/images?api_key=${apiKey}`;
+    return axios.get(imagesUrl);
+  },
+  getSimilarMedias: (type, id) => {
+    const similarUrl = `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=${apiKey}&language=fr-FR`;
+    return axios.get(similarUrl);
   }
 };
 
